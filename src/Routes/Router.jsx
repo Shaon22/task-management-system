@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Addtask from "../Dashboard/Addtask";
 import AllTasks from "../Dashboard/AllTasks";
+import Profile from "../Dashboard/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -17,27 +18,31 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             }
         ]
-       
+
     },
     {
-        path:'/login',
-        element:<Login></Login>
+        path: '/login',
+        element: <Login></Login>
     },
     {
-        path:'/register',
-        element:<Register></Register>  
+        path: '/register',
+        element: <Register></Register>
     },
     {
-        path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>,
-        children:[
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
             {
-                path:'/dashboard/addTask',
-                element:<Addtask></Addtask>
+                path: '/dashboard/profile',
+                element: <Profile></Profile>
             },
             {
-                path:'/dashboard/allTasks',
-                element:<AllTasks></AllTasks>
+                path: '/dashboard/addTask',
+                element: <Addtask></Addtask>
+            },
+            {
+                path: '/dashboard/allTasks',
+                element: <AllTasks></AllTasks>
             }
         ]
     }

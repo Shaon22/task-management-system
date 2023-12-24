@@ -24,7 +24,7 @@ const Navbar = () => {
         <NavLink className={({ isActive }) => (isActive ? ' font-medium' : '')} to="/">Home</NavLink>
         <NavLink className={({ isActive }) => (isActive ? '' : '')} to="/addProducts">About</NavLink>
         <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/myCart`}>Contact</NavLink>
-        <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/dashboard`}>Dashboard</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/dashboard/profile`}>Dashboard</NavLink>
       </div>
     </>
   return (

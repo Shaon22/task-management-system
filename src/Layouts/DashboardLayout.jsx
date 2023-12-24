@@ -7,7 +7,7 @@ const DashboardLayout = () => {
                 <div className="bg-gray-500 min-h-screen w-[20%] p-5 text-white">
                     <ul>
                         <li>
-                            <NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? 'underline' : '')}>Profile</NavLink>
+                            <NavLink to={'/dashboard/profile'} className={({ isActive }) => (isActive ? 'underline' : '')}>Profile</NavLink>
                         </li>
                         <li>
                             <NavLink to={'/dashboard/addTask'} className={({ isActive }) => (isActive ? 'underline' : '')}>Add Task</NavLink>

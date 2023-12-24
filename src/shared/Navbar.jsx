@@ -20,14 +20,15 @@ const Navbar = () => {
 
   const navlinks =
     <>
-      <div className="space-x-10 text-lg font-medium">
+      <div className="space-x-10 text-lg text-white font-medium">
         <NavLink className={({ isActive }) => (isActive ? ' font-medium' : '')} to="/">Home</NavLink>
-        <NavLink className={({ isActive }) => (isActive ? '' : '')} to="/addProducts">Add Products</NavLink>
-        <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/myCart`}>My Cart</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? '' : '')} to="/addProducts">About</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/myCart`}>Contact</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/dashboard`}>Dashboard</NavLink>
       </div>
     </>
   return (
-    <div className="navbar bg-green-500">
+    <div className="navbar bg-black bg-opacity-50  z-10 fixed top-0">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

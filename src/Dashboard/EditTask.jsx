@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import UseAxios from "../Hooks/UseAxios";
+import Swal from "sweetalert2";
 
 const EditTask = () => {
     const axiosPublic=UseAxios()
@@ -23,7 +24,15 @@ const EditTask = () => {
         }
 axiosPublic.patch(`/tasks/${_id}`,updatedInfo)
 .then(res=>{
-    console.log(res.data)
+    if(res.data.modifiedCount>0){
+        Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Task updated successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
 })
     }
 

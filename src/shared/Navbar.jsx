@@ -19,17 +19,30 @@ const Navbar = () => {
   }
 
   const navlinks =
+  
     <>
       <div className="space-x-10 text-lg text-white font-medium">
-        <NavLink className={({ isActive }) => (isActive ? ' font-medium' : '')} to="/">Home</NavLink>
+        {
+          user?
+          <> 
+          <NavLink className={({ isActive }) => (isActive ? ' font-medium' : '')} to="/">Home</NavLink>
         <NavLink className={({ isActive }) => (isActive ? '' : '')} to="/addProducts">About</NavLink>
         <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/myCart`}>Contact</NavLink>
         <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/dashboard/profile`}>Dashboard</NavLink>
+          </>:
+          <>
+          <NavLink className={({ isActive }) => (isActive ? ' font-medium' : '')} to="/">Home</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? '' : '')} to="/addProducts">About</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? '' : '')} to={`/myCart`}>Contact</NavLink>
+          </>
+        }
+       
       </div>
     </>
   return (
     <div className="navbar bg-black bg-opacity-50  z-10 fixed top-0">
       <div className="navbar-start">
+        <h1 className="text-3xl text-white font-medium">TASKMA<span className="text-orange-500">N</span></h1>
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>

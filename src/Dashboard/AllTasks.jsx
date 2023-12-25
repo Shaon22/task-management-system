@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import UseAxios from "../Hooks/UseAxios";
 import Usetasks from "../Hooks/usetasks";
+import Swal from "sweetalert2";
 
 const AllTasks = () => {
     const axiosPublic = UseAxios()
-    const [taskInfo,refetch] = Usetasks()
+    const [taskInfo, refetch] = Usetasks()
     const toDo = taskInfo.filter(item => item.status === 'To-do')
     const onGoing = taskInfo.filter(item => item.status === 'Ongoing')
     const completed = taskInfo.filter(item => item.status === 'Completed')
@@ -12,7 +13,15 @@ const AllTasks = () => {
     const handleDelete = (id) => {
         axiosPublic.delete(`/tasks/${id}`)
             .then(res => {
-                console.log(res.data)
+                if (res.data.deletedCount > 0) {
+                    Swal.fire({
+                        position: "top",
+                        icon: "success",
+                        title: "Task deleted successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
                 refetch()
             })
     }
@@ -25,14 +34,14 @@ const AllTasks = () => {
                         {
                             toDo.map(item => <div key={item._id}>
                                 <div className="bg-gray-200 p-5 ">
-                                    <h1>{item.title}</h1>
-                                    <p>{item.description}</p>
-                                    <h1>{item.deadline}</h1>
-                                    <h1>{item.priority}</h1>
+                                <h1>Title: {item.title}</h1>
+                                    <p>Description: {item.description}</p>
+                                    <h1>Deadline: {item.deadline}</h1>
+                                    <h1>Priority: {item.priority}</h1>
                                 </div>
                                 <div className="space-x-5">
                                     <button onClick={() => handleDelete(item._id)}>Delete</button>
-                                  <Link to={`/dashboard/editTask/${item._id}`}><button>Edit</button></Link>
+                                    <Link to={`/dashboard/editTask/${item._id}`}><button>Edit</button></Link>
                                 </div>
                             </div>)
                         }
@@ -47,10 +56,10 @@ const AllTasks = () => {
                         {
                             onGoing.map(item => <div key={item._id}>
                                 <div className="bg-gray-200 p-5 " >
-                                    <h1>{item.title}</h1>
-                                    <p>{item.description}</p>
-                                    <h1>{item.deadline}</h1>
-                                    <h1>{item.priority}</h1>
+                                    <h1>Title: {item.title}</h1>
+                                    <p>Description: {item.description}</p>
+                                    <h1>Deadline: {item.deadline}</h1>
+                                    <h1>Priority: {item.priority}</h1>
                                 </div>
                                 <div className="space-x-5">
                                     <button onClick={() => handleDelete(item._id)}>Delete</button>
@@ -68,10 +77,10 @@ const AllTasks = () => {
                         {
                             completed.map(item => <div key={item._id}>
                                 <div className="bg-gray-200 p-5 " >
-                                    <h1>{item.title}</h1>
-                                    <p>{item.description}</p>
-                                    <h1>{item.deadline}</h1>
-                                    <h1>{item.priority}</h1>
+                                <h1>Title: {item.title}</h1>
+                                    <p>Description: {item.description}</p>
+                                    <h1>Deadline: {item.deadline}</h1>
+                                    <h1>Priority: {item.priority}</h1>
                                 </div>
                                 <div className="space-x-5">
                                     <button onClick={() => handleDelete(item._id)}>Delete</button>

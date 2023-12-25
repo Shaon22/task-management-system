@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { myContext } from "../AuthProvider/AuthProvider";
 import UseAxios from "../Hooks/UseAxios";
+import Swal from "sweetalert2";
 
 const Addtask = () => {
     const axiosPublic=UseAxios()
@@ -18,12 +19,22 @@ const Addtask = () => {
             description:data.description,
             deadline:data.deadline,
             priority:data.priority,
-            status:'to-do',
+            status:'To-do',
             email:user.email
         }
         axiosPublic.post('/tasks',taskInfo)
         .then(res=>{
-            console.log(res)
+            if(res.data.insertedId){
+                Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "Task added successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+            
+             
         })
     }
 
@@ -54,7 +65,7 @@ const Addtask = () => {
                 <label>Priority</label><br />
                 <select {...register("priority", { required: true })}>
                    <option value="high">High</option>
-                    <option value="mordarate">Mordarate</option>
+                    <option value="moderate">Moderate</option>
                     <option value="low">Low</option>
                 </select>
                </div>
